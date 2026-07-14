@@ -367,10 +367,10 @@ Fill the two URLs **after** `devvit publish` and creating the demo post:
 
 - App listing: <APP_LISTING_URL>
 - Demo post: <DEMO_POST_URL>
-- [ ] `npm run lint` clean
-- [ ] `npm run type-check` clean
-- [ ] `npm test` green (235/235), `npm run test:coverage` at 100%
-- [ ] `npm run build` succeeds (both entrypoints resolve)
+- [x] `npm run lint` clean
+- [x] `npm run type-check` clean
+- [x] `npm test` green (235/235), `npm run test:coverage` at 100%
+- [x] `npm run build` succeeds (both entrypoints resolve)
 - [ ] Demo post seeded (`Seed Demo Day`) and verified against `DEMO.md`
 - [ ] Public repo URL added to the Devpost form
 - [ ] 60-second video recorded (beat script in `DEMO.md`)
