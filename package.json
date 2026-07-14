@@ -2,7 +2,16 @@
   "private": true,
   "name": "grudgeball",
   "version": "1.0.0",
+  "description": "🪤 Daily marble-drop gauntlet where the board is built from other players' grudges — Reddit Games with a Hook (Devvit)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edycutjong/grudgeball.git"
+  },
+  "homepage": "https://github.com/edycutjong/grudgeball#readme",
+  "bugs": {
+    "url": "https://github.com/edycutjong/grudgeball/issues"
+  },
   "type": "module",
   "scripts": {
     "build": "vite build",
