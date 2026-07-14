@@ -206,12 +206,12 @@ The submission repo root is this `build/` folder. CI runs the **real gates** —
 Next.js scripts, no invented tooling.
 
 ```bash
-npm ci              # clean install from package-lock
-npm run lint        # eslint
-npm run type-check  # tsc --build (client+server+shared) + test project
-npm test            # vitest run — 235 tests
-npm run test:coverage  # vitest run --coverage — 100% on shared/core/routes
-npm run build       # vite build → dist/client/{splash,game}.html + dist/server
+npm ci                    # clean install from package-lock
+npm run lint              # eslint
+npm run type-check        # tsc --build (client+server+shared) + test project
+npm test                  # vitest run — 235 tests
+npm run test:coverage     # vitest run --coverage — 100% on shared/core/routes
+npm run build             # vite build → dist/client/{splash,game}.html + dist/server
 npm run check:submission  # pre-submission gate (URLs, README sections, placeholders)
 ```
 
@@ -309,12 +309,12 @@ action.
 
 ```bash
 npm install
-npm run lint        # eslint
-npm run type-check  # tsc --build (client+server+shared) + test project
-npm test            # vitest run — 235 tests
-npm run test:coverage  # vitest run --coverage — 100% on shared/core/routes
-npm run build       # vite build → dist/client/{splash,game}.html + dist/server
-npm run seed:local  # regenerate data/fixtures/demo-board.json (deterministic)
+npm run lint              # eslint
+npm run type-check        # tsc --build (client+server+shared) + test project
+npm test                  # vitest run — 235 tests
+npm run test:coverage     # vitest run --coverage — 100% on shared/core/routes
+npm run build             # vite build → dist/client/{splash,game}.html + dist/server
+npm run seed:local        # regenerate data/fixtures/demo-board.json (deterministic)
 npm run check:submission  # pre-submission gate (see below)
 ```
 
