@@ -100,14 +100,15 @@ Full schema + endpoint tables in [`ARCHITECTURE.md`](ARCHITECTURE.md).
 ```mermaid
 flowchart TD
   subgraph Client [Canvas 2D webview]
-    Sp[Splash / game load] -->|/api/board| S
-    A[Drop scene] -->|/api/drop-result| S
-    B[Placement scene] -->|/api/place| S
-    C[Report modal] -->|/api/report| S
-    Lb[Leaderboards] -->|/api/leaderboards| S
-    A <-->|subscribe board_live| RT[realtime]
+    direction LR
+    Sp[Splash / game load]
+    A[Drop scene]
+    B[Placement scene]
+    C[Report modal]
+    Lb[Leaderboards]
   end
   subgraph Server [Devvit Node]
+    direction LR
     S[Hono routes] --> R[(Redis)]
     CR1[cron compile 00:00] --> R
     CR2[cron accrete hourly] --> R
@@ -118,8 +119,8 @@ flowchart TD
     S -->|app comment / asUser| RED[Reddit API]
     CR1 -->|daily post| RED
   end
-  Client ~~~ Server
-  S -->|publish board_live| RT
+  Client -->|"HTTP · /api/board · /drop-result · /place · /report · /leaderboards"| Server
+  Server -.->|"realtime board_live · server publishes, client subscribes"| Client
 ```
 
 ```
