@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grudgeball — Pitch Deck</title>
+<meta name="description" content="Grudgeball pitch deck: die, plant your revenge, count the bodies at dawn. Reddit Games with a Hook submission.">
+<link rel="icon" type="image/svg+xml" href="../icon.svg">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Grudgeball — Pitch Deck">
+<meta property="og:description" content="Grudgeball pitch deck: die, plant your revenge, count the bodies at dawn. Reddit Games with a Hook submission.">
+<meta property="og:image" content="https://edycutjong.github.io/grudgeball/og-image.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:url" content="https://edycutjong.github.io/grudgeball/pitch/">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  :root {
+    --base: #07060B;
+    --panel: #12101A;
+    --panel2: #17141F;
+    --red: #EF4444;
+    --brass: #F59E0B;
+    --green: #34D399;
+    --text: #E7E5F0;
+    --dim: #8B87A0;
+    --dimmer: #55506A;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--base);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    overflow-x: hidden;
+    height: 100%;
+  }
+  .mono { font-family: "SFMono-Regular", Menlo, Consolas, monospace; }
+
+  /* ---------- deck shell ---------- */
+  .deck {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6vh 8vw;
+    opacity: 0;
+    transform: translateX(40px) scale(0.98);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse 900px 600px at 10% 0%, rgba(239,68,68,0.10), transparent 60%),
+      radial-gradient(ellipse 900px 700px at 100% 100%, rgba(245,158,11,0.08), transparent 60%),
+      var(--base);
+  }
+  .slide.active {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+    pointer-events: auto;
+    z-index: 2;
+  }
+  .slide.prev {
+    transform: translateX(-40px) scale(0.98);
+  }
+
+  .eyebrow-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--brass); font-weight: 700; margin-bottom: 18px;
+  }
+  .eyebrow-tag::before { content: ""; width: 22px; height: 2px; background: var(--brass); display: inline-block; }
+
+  h1.slide-title {
+    font-size: clamp(1.8rem, 4.4vw, 3.1rem);
+    font-weight: 900;
+    margin: 0 0 18px;
+    line-height: 1.12;
+    background: linear-gradient(120deg, #FFFFFF 25%, var(--brass) 70%, var(--red) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  p.slide-sub {
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    color: var(--dim);
+    max-width: 900px;
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+  .bullets { list-style: none; margin: 0; padding: 0; max-width: 900px; }
+  .bullets li {
+    position: relative;
+    padding-left: 26px;
+    margin-bottom: 14px;
+    font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+    line-height: 1.5;
+    color: var(--text);
+  }
+  .bullets li::before {
+    content: "▸";
+    position: absolute; left: 0; top: 0;
+    color: var(--red);
+    font-weight: 700;
+  }
+  .bullets li strong { color: var(--brass); }
+  .bullets li em { color: var(--green); font-style: normal; }
+
+  .card-row { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 8px; }
+  .mini-card {
+    background: linear-gradient(180deg, var(--panel), var(--panel2));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 18px 20px;
+    flex: 1 1 220px;
+  }
+  .mini-card h4 { margin: 0 0 8px; font-size: 0.95rem; color: var(--brass); }
+  .mini-card p { margin: 0; font-size: 0.88rem; color: var(--dim); line-height: 1.5; }
+
+  table.pitch-table { border-collapse: collapse; width: 100%; max-width: 900px; margin: 12px 0 20px; }
+  table.pitch-table th, table.pitch-table td {
+    text-align: left; padding: 10px 14px; font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  table.pitch-table th { color: var(--brass); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  table.pitch-table td { color: var(--text); }
+  table.pitch-table td.dim { color: var(--dim); }
+
+  code, pre {
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  pre.code-block {
+    background: var(--panel);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 0.82rem;
+    color: var(--green);
+    max-width: 900px;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+
+  .notes {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px dashed rgba(255,255,255,0.12);
+    color: var(--dimmer);
+    font-size: 0.82rem;
+    max-width: 900px;
+    line-height: 1.55;
+  }
+  .notes strong { color: var(--dim); }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 16px; max-width: 900px; margin: 10px 0 20px; }
+  .stat-box { text-align: center; padding: 16px 8px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; }
+  .stat-box .n { font-size: 1.8rem; font-weight: 900; color: var(--brass); }
+  .stat-box .l { font-size: 0.78rem; color: var(--dim); margin-top: 4px; }
+
+  /* Slide 1 title styling */
+  #slide-1 .brandmark { display: flex; align-items: center; gap: 18px; margin-bottom: 26px; }
+  #slide-1 .brandmark svg { width: 74px; height: 74px; }
+  #slide-1 h1.slide-title { font-size: clamp(2.6rem, 7vw, 5.2rem); margin-bottom: 14px; }
+  #slide-1 .tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 22px; }
+  #slide-1 .tag {
+    font-size: 12px; padding: 7px 14px; border-radius: 999px;
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); color: var(--dim);
+  }
+
+  /* slide number / progress */
+  .chrome {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 26px;
+    background: linear-gradient(0deg, rgba(7,6,11,0.9), transparent);
+    pointer-events: none;
+  }
+  .chrome * { pointer-events: auto; }
+  .progress-track {
+    flex: 1; height: 3px; background: rgba(255,255,255,0.08); border-radius: 2px; margin: 0 20px; overflow: hidden;
+  }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--red), var(--brass)); border-radius: 2px; transition: width 0.35s ease; }
+  .nav-btn {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+    color: var(--text); width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    font-size: 16px; transition: background 0.15s ease;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.14); }
+  .slide-count { font-size: 12px; color: var(--dim); font-family: monospace; white-space: nowrap; }
+  .home-link {
+    font-size: 12px; color: var(--dim); text-decoration: none; white-space: nowrap;
+  }
+  .home-link:hover { color: var(--text); }
+
+  ::selection { background: rgba(239,68,68,0.4); }
+
+  /* ---------- print ---------- */
+  @media print {
+    html, body { height: auto; }
+    .chrome { display: none; }
+    .deck { height: auto; overflow: visible; }
+    .slide {
+      position: relative;
+      opacity: 1 !important;
+      transform: none !important;
+      pointer-events: auto;
+      page-break-after: always;
+      break-after: page;
+      height: 100vh;
+      width: 100%;
+    }
+    .slide:last-child { page-break-after: auto; }
+  }
+
+  @media (max-width: 720px) {
+    .slide { padding: 8vh 6vw; }
+    .card-row, .stat-grid { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <section class="slide active" id="slide-1">
+    <div class="eyebrow-tag">Slide 1 · Title &amp; Hook</div>
+    <div class="brandmark">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Grudgeball icon">
+        <defs>
+          <linearGradient id="s1-brand" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#EF4444"/><stop offset="100%" stop-color="#F59E0B"/>
+          </linearGradient>
+          <radialGradient id="s1-marble" cx="0.35" cy="0.3" r="1">
+            <stop offset="0%" stop-color="#FFF7ED"/><stop offset="35%" stop-color="#F59E0B"/><stop offset="100%" stop-color="#EF4444"/>
+          </radialGradient>
+        </defs>
+        <rect x="16" y="16" width="480" height="480" rx="112" fill="#0B0910"/>
+        <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="url(#s1-brand)" stroke-opacity="0.3" stroke-width="6"/>
+        <circle cx="256" cy="196" r="86" fill="url(#s1-marble)"/>
+        <circle cx="226" cy="166" r="22" fill="#FFFFFF" opacity="0.75"/>
+        <g fill="url(#s1-brand)">
+          <path d="M96 448 L152 312 L208 448 Z"/><path d="M200 448 L256 292 L312 448 Z"/><path d="M304 448 L360 312 L416 448 Z"/>
+        </g>
+        <rect x="88" y="440" width="336" height="16" rx="8" fill="url(#s1-brand)" opacity="0.9"/>
+      </svg>
+      <div>
+        <h1 class="slide-title" style="margin:0;">GRUDGEBALL</h1>
+      </div>
+    </div>
+    <p class="slide-sub"><em>Die. Plant your revenge. Come back to count the bodies at dawn.</em></p>
+    <ul class="bullets">
+      <li>A daily marble gauntlet living in one Reddit post — <strong>built by the crowd, one grudge at a time.</strong></li>
+    </ul>
+    <div class="tags">
+      <span class="tag">Best App with a Hook</span>
+      <span class="tag">Best Use of User Contributions</span>
+      <span class="tag">Best Use of Retention Mechanics</span>
+    </div>
+    <div class="notes"><strong>Speaker notes:</strong> Open cold on the board, not on a logo. "This is one Reddit post. Everything red on it was placed and named by another redditor — and every one is counting bodies." Ten seconds, then drop a marble. Don't explain the rules yet; let the death do it.</div>
+  </section>
+
+  <section class="slide" id="slide-2">
+    <div class="eyebrow-tag">Slide 2 · The Problem</div>
+    <h1 class="slide-title">Reddit games get played once and abandoned.</h1>
+    <p class="slide-sub">Daily games run out of hand-authored content.</p>
+    <ul class="bullets">
+      <li>The hook a game needs on Reddit isn't graphics — it's <strong>a reason to come back tomorrow</strong> and a reason the post is alive when a stranger opens it at 3am.</li>
+      <li>Hand-authored daily content doesn't scale for a solo dev. Random generation feels hollow. Pure PvP needs a crowd you don't have yet.</li>
+    </ul>
+    <div class="notes"><strong>Speaker notes:</strong> Frame the real pain for this hackathon: judging is a lone stranger, often on mobile, often alone, opening a live post. Most entries show that stranger an empty room or a one-and-done toy. That is the problem Grudgeball is engineered against.</div>
+  </section>
+
+  <section class="slide" id="slide-3">
+    <div class="eyebrow-tag">Slide 3 · The Solution</div>
+    <h1 class="slide-title">The players are the content engine.</h1>
+    <p class="slide-sub">Yesterday's crowd builds today's board.</p>
+    <div class="card-row">
+      <div class="mini-card">
+        <h4>DROP</h4>
+        <p>3 marbles/day through a machine of bumpers, fans, magnets, spikes — every object named + attributed to its builder.</p>
+      </div>
+      <div class="mini-card">
+        <h4>PLACE</h4>
+        <p>One object into tomorrow's board: a cruel one earns Menace credit per kill, a kind one earns Angel credit per save.</p>
+      </div>
+      <div class="mini-card">
+        <h4>RETURN</h4>
+        <p>At dawn to a personal Grudge Report: "Your spike 'Greg's Regret' claimed 87 marbles. You are today's #3 Menace."</p>
+      </div>
+    </div>
+    <div class="notes"><strong>Speaker notes:</strong> Three verbs, one screen, one thumb. The genius isn't the marble physics — it's that spending your marbles earns you the right to leave a mark, and that mark hunts strangers overnight and reports back. That's the loop no amount of content authoring can fake.</div>
+  </section>
+
+  <section class="slide" id="slide-4">
+    <div class="eyebrow-tag">Slide 4 · Live Demo Flow (the magic moment)</div>
+    <h1 class="slide-title">Watch a stranger's trap claim you.</h1>
+    <p class="slide-sub">And watch their score move.</p>
+    <table class="pitch-table">
+      <tr><th>t</th><th>Beat</th></tr>
+      <tr><td class="mono dim">0:00</td><td>Board opens: <span class="mono">DAY N · 32 TRAPS · CRUELTY ×2.7</span>, ghost-trails of the dead</td></tr>
+      <tr><td class="mono dim">0:09</td><td>Marble dies on <strong>"Greg's Regret"</strong> → <span class="mono">312</span> ticks to <span class="mono">313</span> bodies claimed → <span class="mono">u/gb_founder_greg</span> banks +1 Menace → "You were victim #313"</td></tr>
+      <tr><td class="mono dim">0:20</td><td>Marbles spent → dim board, glowing legal cells → <strong>PLANT</strong> your grudge</td></tr>
+      <tr><td class="mono dim">0:30</td><td>Morning <strong>Grudge Report</strong>: "First Grudge claimed 87 marbles overnight — #3 Menace"</td></tr>
+    </table>
+    <p class="slide-sub" style="margin-top:0;"><em>Verified deterministic</em> on the seed: center drop → row 13 → Greg's Regret → score <strong>3510</strong> (13 × 100 × 2.7).</p>
+    <div class="notes"><strong>Speaker notes:</strong> This is the whole pitch in eight seconds. Land the tick at 0:09 — the number counting up is the "oh." It says: you just became a line in a stranger's kill count, and you watched them profit. Then show that you get to do the same to someone else.</div>
+  </section>
+
+  <section class="slide" id="slide-5">
+    <div class="eyebrow-tag">Slide 5 · Architecture &amp; Devvit Tech</div>
+    <h1 class="slide-title">100% native Devvit.</h1>
+    <p class="slide-sub">Zero external fetch. Zero runtime AI.</p>
+    <pre class="code-block">src/shared/   pure domain core (types, grid, A* solvability, cruelty, score, day)
+src/server/   Hono over Redis + Reddit + scheduler
+src/client/   Canvas-2D renderer + deterministic drop sim (React-free)</pre>
+    <ul class="bullets">
+      <li><strong>The crown jewel:</strong> every placement is one <span class="mono">watch/multi/exec</span> transaction that enforces — in-transaction — one-placement-per-day, cell vacancy, per-band density caps, and an A* solvability check.</li>
+      <li><strong>Game clock = Devvit scheduler:</strong> compile-board cron at <span class="mono">0 0 * * *</span>, hourly-accrete at <span class="mono">0 * * * *</span> → the Cruelty Multiplier (1.0 → 4.0) climbs all day.</li>
+      <li>Surface exercised: Redis hashes + sorted-sets, <span class="mono">onPostCreate</span> trigger, 3 mod menu actions, <span class="mono">board_live</span> realtime channel, Reddit app comment + <span class="mono">asUser: SUBMIT_COMMENT</span>. <span class="mono">devvit.json → http.enable: false</span>.</li>
+    </ul>
+    <div class="notes"><strong>Speaker notes:</strong> Emphasize the transaction — it's the answer to the classic UGC troll-level problem and the reason the moderation plan fits in one paragraph. The compiler re-validates everything as defense-in-depth and is byte-reproducible from seed = hash(day).</div>
+  </section>
+
+  <section class="slide" id="slide-6">
+    <div class="eyebrow-tag">Slide 6 · Impact / Why Reddit</div>
+    <h1 class="slide-title">Remove Devvit and you'd need six systems.</h1>
+    <p class="slide-sub">And you'd still have no crowd.</p>
+    <ul class="bullets">
+      <li>The feed delivers <strong>thousands of identified strangers to one persistent post, all day</strong> — the irreplaceable ingredient.</li>
+      <li>Placement transactions, a scheduler game-clock, <span class="mono">onPostCreate</span> binding, realtime, app + <span class="mono">asUser</span> comments, menu-action mod tools — all native, all in one app.</li>
+      <li><strong>Reddit-y without theming:</strong> the board is the community's accumulated personality (usernames on every object, blame in the comments) with <em>zero karma/Snoo cosplay</em> — exactly what the rubric's anti-preferences reward.</li>
+    </ul>
+    <div class="notes"><strong>Speaker notes:</strong> Judges penalize on-the-nose Reddit theming. Grudgeball is Reddit-native at the mechanic level, not the skin level: the content is other redditors, attributed by username. That's the distinction that wins the "Reddit-y" criterion honestly.</div>
+  </section>
+
+  <section class="slide" id="slide-7">
+    <div class="eyebrow-tag">Slide 7 · Retention &amp; Viability</div>
+    <h1 class="slide-title">The strongest return trigger we found:</h1>
+    <p class="slide-sub">A personalized overnight consequence — across a 205-idea corpus.</p>
+    <ul class="bullets">
+      <li><strong>Daily reasons to return, stacked:</strong> (1) a fresh board every midnight, (2) your Grudge Report waiting, (3) the Cruelty Multiplier wager — play early for a gentle board at low stakes, or brave 4× at night.</li>
+      <li><strong>Dual-economy guardrail:</strong> Angel objects pay leaderboard credit equal to Menace kills, and per-band density caps guarantee a passable line — the board can't degenerate into all-spikes, so it stays fun on day 30.</li>
+      <li><strong>Cost to run:</strong> no external APIs, no model inference, payload budget ≤36KB/board (far under Devvit's 4MB) — it scales on Reddit's infra essentially for free.</li>
+    </ul>
+    <div class="notes"><strong>Speaker notes:</strong> "Viability" for a Reddit game = does it survive contact with a real subreddit for months. The dual economy and density caps are the long-term health mechanics; the report is the daily habit. Post-hackathon, PaymentsClient is already a verified surface for cosmetic banners.</div>
+  </section>
+
+  <section class="slide" id="slide-8">
+    <div class="eyebrow-tag">Slide 8 · Competitive Advantage (vs. a ~1,469 field)</div>
+    <h1 class="slide-title">Novel loop, anti-slop by construction.</h1>
+    <ul class="bullets">
+      <li>The field's auto-lose archetypes — fishing, space-shooter, clone, trivia, AI-slop — are precisely what Grudgeball is <strong>not</strong>.</li>
+      <li>Closest priors a judge has seen: Peggle/pachinko (mechanic only), r/place (canvas, no stakes), "The Button" (consequence, no play). <strong>None</strong> combine drop physics + attributed-UGC traps + a personal kill report + an intraday multiplier.</li>
+      <li>SPEC: "Loop appears 0× in the 205-idea corpus." The mechanic is a known genre; <em>the stack is the moat.</em></li>
+    </ul>
+    <div class="notes"><strong>Speaker notes:</strong> Don't claim the marble drop is novel — a judge will call that bluff. Claim the combination is novel and defensible, and that it's engineered to dodge every anti-preference the organizers published. That's a sharper, more credible edge than "we're more fun."</div>
+  </section>
+
+  <section class="slide" id="slide-9">
+    <div class="eyebrow-tag">Slide 9 · Traction &amp; Validation</div>
+    <h1 class="slide-title">Built, green, and reproducible — today.</h1>
+    <div class="stat-grid">
+      <div class="stat-box"><div class="n">87/87</div><div class="l">tests passing, 9 files</div></div>
+      <div class="stat-box"><div class="n">60</div><div class="l">seeded objects, 12 founders</div></div>
+      <div class="stat-box"><div class="n">≤220</div><div class="l">hard active-body cap</div></div>
+      <div class="stat-box"><div class="n">&lt;30s</div><div class="l">all endpoint budgets</div></div>
+    </div>
+    <ul class="bullets">
+      <li><strong>87 automated tests across 9 files</strong> (vitest run), covering the placement transaction (16), anti-cheat plausibility (14), the Redis watch/multi/exec stub (13), compile determinism (11), A* solvability (9), and more.</li>
+      <li><span class="mono">tsc --build</span> clean; <span class="mono">vite build</span> ships both entrypoints. Deterministic seed: 60 objects, 12 labeled founders, 40 ghost trails — a judge gets the identical experience every run.</li>
+      <li><strong>Live-cadence plan:</strong> the test sub compiles a real board nightly via cron so the feed itself demonstrates the retention loop by judging day.</li>
+    </ul>
+    <div class="notes"><strong>Speaker notes:</strong> Lead with 87/87 green — for a solo entry that signals real engineering maturity, backed by the CI pipeline. Then the seed determinism: it means the demo can't flake. Be explicit that the numbers are budgets enforced in code, not benchmarked latencies you're hand-waving.</div>
+  </section>
+
+  <section class="slide" id="slide-10">
+    <div class="eyebrow-tag">Slide 10 · Roadmap (30 / 60 / 90)</div>
+    <h1 class="slide-title">Every item maps to a verified Devvit surface.</h1>
+    <table class="pitch-table">
+      <tr><th>Window</th><th>Ship</th></tr>
+      <tr><td class="mono dim">30 days</td><td>Live in r/GrudgeballGame with daily cadence; device feel pass (60fps mid-range Android); tune density caps + cruelty curve from real players</td></tr>
+      <tr><td class="mono dim">60 days</td><td>Champion flair banners (verified setUserFlair); weekly "deadliest object" hall of fame; realtime kill-feed polish</td></tr>
+      <tr><td class="mono dim">90 days</td><td>Cosmetic economy via PaymentsClient (verified package); seasonal board themes; multi-subreddit installs (schema already siloed per-sub)</td></tr>
+    </table>
+    <div class="notes"><strong>Speaker notes:</strong> Every roadmap item maps to a Devvit surface that's already verified in the docs-cache (flair, payments, per-sub Redis siloing) — so this is a credible path, not a wishlist. Nothing on it is load-bearing for the submission.</div>
+  </section>
+
+  <section class="slide" id="slide-11">
+    <div class="eyebrow-tag">Slide 11 · The Team</div>
+    <h1 class="slide-title">One solo builder, shipping the whole stack.</h1>
+    <ul class="bullets">
+      <li>Pure shared core, Hono server, Canvas client, Redis schema, scheduler, moderation tools, anti-cheat model, 87 tests, full asset suite, and an honest friction log — solo.</li>
+      <li>Design discipline visible in the constraints: one screen, one verb, fixed palette, portrait-first, zero-horizontal-scroll as a release blocker.</li>
+    </ul>
+    <div class="notes"><strong>Speaker notes:</strong> The solo angle is a strength here — it demonstrates that the scope was chosen to be finishable at launch grade, which is exactly the "Polish" criterion. Point at docs/friction-log.md as proof the hard toolchain problems were met and documented, not hidden.</div>
+  </section>
+
+  <section class="slide" id="slide-12">
+    <div class="eyebrow-tag">Slide 12 · Ask / Close</div>
+    <h1 class="slide-title">Play the live post. Die once.</h1>
+    <p class="slide-sub">You'll be planning your revenge on the walk home.</p>
+    <ul class="bullets">
+      <li><strong>Try it:</strong> open the demo post → center DROP → watch Greg's Regret tick to 313 → plant your grudge.</li>
+      <li>Best App with a Hook · Best Use of User Contributions · Best Use of Retention Mechanics.</li>
+      <li>Repo is green (87/87), CI-gated, MIT-licensed. Video ≤60s. DEMO.md walks the exact judge path.</li>
+    </ul>
+    <div class="card-row" style="margin-top: 20px;">
+      <div class="mini-card">
+        <h4>Play</h4>
+        <p><a href="https://reddit.com/r/GrudgeballGame" target="_blank" rel="noopener" style="color:var(--brass);">reddit.com/r/GrudgeballGame</a></p>
+      </div>
+      <div class="mini-card">
+        <h4>Code</h4>
+        <p><a href="https://github.com/edycutjong/grudgeball" target="_blank" rel="noopener" style="color:var(--brass);">github.com/edycutjong/grudgeball</a></p>
+      </div>
+    </div>
+    <div class="notes"><strong>Speaker notes:</strong> Close on the emotional line, not the tech: "if a spike named after you got your marble, it wasn't personal — it was Grudgeball." Then the CTA is a dare, not a request.</div>
+  </section>
+
+</div>
+
+<div class="chrome">
+  <button class="nav-btn" id="prevBtn" aria-label="Previous slide">‹</button>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <span class="slide-count mono" id="slideCount">1 / 12</span>
+  <button class="nav-btn" id="nextBtn" aria-label="Next slide">›</button>
+  <a class="home-link" href="../">↩ Landing page</a>
+</div>
+
+<script>
+(function () {
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var total = slides.length;
+  var current = 0;
+
+  function render() {
+    slides.forEach(function (s, i) {
+      s.classList.remove('active', 'prev');
+      if (i === current) s.classList.add('active');
+      else if (i < current) s.classList.add('prev');
+    });
+    document.getElementById('slideCount').textContent = (current + 1) + ' / ' + total;
+    document.getElementById('progressFill').style.width = (((current + 1) / total) * 100) + '%';
+    history.replaceState(null, '', '#slide-' + (current + 1));
+  }
+
+  function go(delta) {
+    current = Math.max(0, Math.min(total - 1, current + delta));
+    render();
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', function () { go(1); });
+  document.getElementById('prevBtn').addEventListener('click', function () { go(-1); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { e.preventDefault(); go(1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(-1); }
+    else if (e.key === 'Home') { current = 0; render(); }
+    else if (e.key === 'End') { current = total - 1; render(); }
+  });
+
+  // touch swipe
+  var touchStartX = null;
+  document.addEventListener('touchstart', function (e) { touchStartX = e.touches[0].clientX; }, { passive: true });
+  document.addEventListener('touchend', function (e) {
+    if (touchStartX === null) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+    touchStartX = null;
+  }, { passive: true });
+
+  // deep-link support
+  var hash = window.location.hash;
+  var m = hash.match(/slide-(\d+)/);
+  if (m) {
+    var n = parseInt(m[1], 10) - 1;
+    if (n >= 0 && n < total) current = n;
+  }
+
+  render();
+})();
+</script>
+
+</body>
+</html>

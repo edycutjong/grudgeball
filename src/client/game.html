@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Grudgeball</title>
+  </head>
+  <body>
+    <div class="app">
+      <div class="hud">
+        <span class="day" id="day">DAY –</span>
+        <span><span class="traps" id="traps">– TRAPS</span> · <span class="cruelty" id="cruelty">×–</span></span>
+        <span class="pips" id="pips" aria-label="marbles left"></span>
+      </div>
+      <div class="board-wrap">
+        <canvas class="board" id="board" width="360" height="960" aria-label="Grudgeball board"></canvas>
+        <div class="overlay hidden" id="beat"><div class="card" id="beat-card"></div></div>
+        <div class="overlay hidden" id="report"><div class="card" id="report-card"></div></div>
+        <div class="overlay hidden" id="lb"><div class="card" id="lb-card"></div></div>
+      </div>
+      <div id="placebar" class="hidden"></div>
+      <div class="controls" id="controls"></div>
+      <div class="hint" id="hint">Tap a column, then DROP.</div>
+    </div>
+    <script type="module" src="./game.ts"></script>
+  </body>
+</html>

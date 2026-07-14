@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Grudgeball icon: a marble hovering over a spike pit">
+  <!-- Grudgeball animated mark — menacing marble over the spike pit. Textless, self-contained, t=0 frame is complete. -->
+  <defs>
+    <linearGradient id="gb-brand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="var(--primary, #EF4444)"/>
+      <stop offset="100%" stop-color="var(--accent, #F59E0B)"/>
+    </linearGradient>
+    <radialGradient id="gb-marble" cx="0.35" cy="0.3" r="1">
+      <stop offset="0%" stop-color="#FFF7ED"/>
+      <stop offset="35%" stop-color="var(--accent, #F59E0B)"/>
+      <stop offset="100%" stop-color="var(--primary, #EF4444)"/>
+    </radialGradient>
+    <linearGradient id="gb-spike" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="var(--primary, #EF4444)"/>
+      <stop offset="100%" stop-color="var(--accent, #F59E0B)"/>
+    </linearGradient>
+    <linearGradient id="gb-gleam" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="gb-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="gb-pitclip"><path d="M96 448 L152 312 L208 448 Z M200 448 L256 292 L312 448 Z M304 448 L360 312 L416 448 Z"/></clipPath>
+    <style>
+      .gb-bob   { animation: gb-bob 3.2s ease-in-out infinite; }
+      .gb-halo  { animation: gb-halo 3.2s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
+      .gb-dash1 { animation: gb-fall 1.6s ease-in infinite; }
+      .gb-dash2 { animation: gb-fall 1.6s ease-in 0.5s infinite; }
+      .gb-dash3 { animation: gb-fall 1.6s ease-in 1.0s infinite; }
+      .gb-sweep { animation: gb-sweep 3.6s ease-in-out infinite; }
+      @keyframes gb-bob   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(16px); } }
+      @keyframes gb-halo  { 0%,100% { opacity: 0.5; transform: scale(1); } 50% { opacity: 1; transform: scale(1.12); } }
+      @keyframes gb-fall  { 0% { transform: translateY(0); opacity: 0.7; } 70% { opacity: 0.25; } 100% { transform: translateY(56px); opacity: 0; } }
+      @keyframes gb-sweep { 0%,55% { transform: translateX(-360px); } 90%,100% { transform: translateX(360px); } }
+      @media (prefers-reduced-motion: reduce) { .gb-bob,.gb-halo,.gb-dash1,.gb-dash2,.gb-dash3,.gb-sweep { animation: none; } }
+    </style>
+  </defs>
+
+  <!-- Backplate -->
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="#0B0910"/>
+  <rect x="16" y="16" width="480" height="480" rx="112" fill="none" stroke="url(#gb-brand)" stroke-opacity="0.28" stroke-width="6"/>
+
+  <!-- Falling motion dashes -->
+  <g stroke="url(#gb-brand)" stroke-width="14" stroke-linecap="round">
+    <line class="gb-dash1" x1="256" y1="64" x2="256" y2="100"/>
+    <line class="gb-dash2" x1="196" y1="80" x2="196" y2="106"/>
+    <line class="gb-dash3" x1="316" y1="80" x2="316" y2="106"/>
+  </g>
+
+  <!-- Pulsing menace halo behind the marble -->
+  <circle class="gb-halo" cx="256" cy="196" r="104" fill="var(--primary, #EF4444)" opacity="0.5" filter="url(#gb-glow)"/>
+
+  <!-- The marble (bobs toward the spikes) -->
+  <g class="gb-bob">
+    <circle cx="256" cy="196" r="86" fill="url(#gb-marble)" filter="url(#gb-glow)"/>
+    <circle cx="226" cy="166" r="22" fill="#FFFFFF" opacity="0.75"/>
+  </g>
+
+  <!-- Spike pit -->
+  <g fill="url(#gb-spike)">
+    <path d="M96 448 L152 312 L208 448 Z"/>
+    <path d="M200 448 L256 292 L312 448 Z"/>
+    <path d="M304 448 L360 312 L416 448 Z"/>
+  </g>
+  <!-- Gleam sweeping across the spike tips -->
+  <g clip-path="url(#gb-pitclip)">
+    <rect class="gb-sweep" x="196" y="280" width="120" height="180" fill="url(#gb-gleam)" transform="skewX(-18)"/>
+  </g>
+  <!-- Pit baseline -->
+  <rect x="88" y="440" width="336" height="16" rx="8" fill="url(#gb-brand)" opacity="0.9"/>
+</svg>

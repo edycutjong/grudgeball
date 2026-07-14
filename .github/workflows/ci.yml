@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel superseded runs for the same branch/PR.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gates:
+    name: "Gates · Node ${{ matrix.node-version }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 20 as requested; 22 matches package.json engines (>=22.2.0) and the
+        # local dev toolchain, guaranteeing a green path on the declared engine.
+        node-version: [22]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint (eslint)
+        run: npm run lint
+
+      # tsc --build (via the type-check script), NOT `tsc --noEmit`: on this
+      # solution-style tsconfig, --noEmit is a false-clean (see
+      # docs/friction-log.md). The script runs the client/server/shared build
+      # AND the test project.
+      - name: Type-check (tsc --build + test project)
+        run: npm run type-check
+
+      # Coverage is scoped (vitest.config.ts) to src/shared + src/server/core
+      # + src/server/routes — the pure/mockable business logic — at a 100%
+      # threshold; src/client/** (Canvas/Phaser, needs a real browser) and
+      # src/server/index.ts (process bootstrap) are excluded on purpose.
+      - name: Unit tests + coverage (100% on shared/core/routes)
+        run: npm run test:coverage
+
+      - name: Client + server build (vite -> dist/client + dist/server)
+        run: npm run build

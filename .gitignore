@@ -1,0 +1,17 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+scripts/out/
+
+# Environment / secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Test / coverage output
+coverage/
+
+# Asset workshop (large local exports, not needed in the repo)
+docs/assets/
+

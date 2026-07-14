@@ -1,0 +1,17 @@
+{
+  "extends": "./tools/tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "noEmit": true,
+    "types": ["node"],
+    "exactOptionalPropertyTypes": false,
+    "rootDir": "."
+  },
+  "include": [
+    "tests/**/*",
+    "scripts/seed-local.ts",
+    "src/server/core/**/*",
+    "src/shared/**/*"
+  ],
+  "exclude": ["node_modules", "dist"]
+}

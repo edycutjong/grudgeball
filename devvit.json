@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "grudgeball",
+  "post": {
+    "dir": "dist/client",
+    "entrypoints": {
+      "default": {
+        "inline": true,
+        "entry": "splash.html"
+      },
+      "game": {
+        "entry": "game.html",
+        "height": "tall"
+      }
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "permissions": {
+    "redis": true,
+    "realtime": true,
+    "http": {
+      "enable": false
+    },
+    "reddit": {
+      "enable": true,
+      "asUser": ["SUBMIT_COMMENT"]
+    }
+  },
+  "triggers": {
+    "onPostCreate": "/internal/triggers/post-create"
+  },
+  "scheduler": {
+    "tasks": {
+      "compile-board": {
+        "endpoint": "/internal/cron/compile",
+        "cron": "0 0 * * *"
+      },
+      "hourly-accrete": {
+        "endpoint": "/internal/cron/accrete",
+        "cron": "0 * * * *"
+      }
+    }
+  },
+  "menu": {
+    "items": [
+      {
+        "label": "Grudgeball: Seed Demo Day",
+        "description": "Load the deterministic 60-object demo board with founder authors and counters",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/seed"
+      },
+      {
+        "label": "Grudgeball: Purge Object",
+        "description": "Remove an offensive object from today's board by id or name",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/purge"
+      },
+      {
+        "label": "Grudgeball: Create Today's Post",
+        "description": "Manually create today's board post (normally done by the midnight cron)",
+        "location": "subreddit",
+        "forUserType": "moderator",
+        "endpoint": "/internal/menu/post-create"
+      }
+    ]
+  },
+  "forms": {
+    "purgeForm": "/internal/form/purge-submit"
+  },
+  "dev": {
+    "subreddit": "GrudgeballGame"
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build"
+  }
+}
