@@ -36,6 +36,7 @@ flowchart TD
     S -->|app comment / asUser| RED[Reddit API]
     CR1 -->|daily post| RED
   end
+  Client ~~~ Server
   S -->|publish board_live| RT
 ```
 
