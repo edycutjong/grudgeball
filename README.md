@@ -365,7 +365,7 @@ have.
 Run `npm run check:submission` before submitting. It fails until these are done.
 Fill the two URLs **after** `devvit publish` and creating the demo post:
 
-- App listing: <APP_LISTING_URL>
+- App listing: https://developers.reddit.com/apps/grudgeball
 - Demo post: <DEMO_POST_URL>
 - [x] `npm run lint` clean
 - [x] `npm run type-check` clean
