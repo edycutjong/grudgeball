@@ -265,11 +265,15 @@
     position: relative;
   }
   .feed-track {
-    display: flex; gap: 48px; white-space: nowrap;
+    display: flex; white-space: nowrap; width: max-content;
     animation: marquee 22s linear infinite;
     font-family: "SFMono-Regular", Menlo, Consolas, monospace;
     font-size: 13px;
   }
+  /* Trailing gap per item (not flex `gap`) so each duplicated half is exactly
+     50% of the track — makes translateX(-50%) loop seamlessly, with no half-gap
+     jump at the seam and even spacing all the way around. */
+  .feed-track > span { margin-right: 48px; }
   .feed-track span.k { color: var(--red); }
   .feed-track span.s { color: var(--green); }
   .feed-track span.b { color: var(--brass); }
