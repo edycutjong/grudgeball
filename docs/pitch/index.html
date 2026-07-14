@@ -14,8 +14,13 @@
 <meta property="og:image:height" content="1260">
 <meta property="og:url" content="https://edycutjong.github.io/grudgeball/pitch/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
     --base: #07060B;
     --panel: #12101A;
     --panel2: #17141F;
@@ -31,10 +36,11 @@
     margin: 0; padding: 0;
     background: var(--base);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: var(--font-body);
     overflow-x: hidden;
     height: 100%;
   }
+  h1.slide-title, .stat-box .n, .eyebrow-tag { font-family: var(--font-display); }
   .mono { font-family: "SFMono-Regular", Menlo, Consolas, monospace; }
 
   /* ---------- deck shell ---------- */
@@ -266,7 +272,7 @@
 
   <section class="slide" id="slide-2">
     <div class="eyebrow-tag">Slide 2 · The Problem</div>
-    <h1 class="slide-title">Reddit games get played once and abandoned.</h1>
+    <h1 class="slide-title">Reddit games die after one play.</h1>
     <p class="slide-sub">Daily games run out of hand-authored content.</p>
     <ul class="bullets">
       <li>The hook a game needs on Reddit isn't graphics — it's <strong>a reason to come back tomorrow</strong> and a reason the post is alive when a stranger opens it at 3am.</li>
@@ -328,7 +334,7 @@ src/client/   Canvas-2D renderer + deterministic drop sim (React-free)</pre>
 
   <section class="slide" id="slide-6">
     <div class="eyebrow-tag">Slide 6 · Impact / Why Reddit</div>
-    <h1 class="slide-title">Remove Devvit and you'd need six systems.</h1>
+    <h1 class="slide-title">Six systems, or one Devvit app.</h1>
     <p class="slide-sub">And you'd still have no crowd.</p>
     <ul class="bullets">
       <li>The feed delivers <strong>thousands of identified strangers to one persistent post, all day</strong> — the irreplaceable ingredient.</li>
@@ -365,22 +371,22 @@ src/client/   Canvas-2D renderer + deterministic drop sim (React-free)</pre>
     <div class="eyebrow-tag">Slide 9 · Traction &amp; Validation</div>
     <h1 class="slide-title">Built, green, and reproducible — today.</h1>
     <div class="stat-grid">
-      <div class="stat-box"><div class="n">87/87</div><div class="l">tests passing, 9 files</div></div>
+      <div class="stat-box"><div class="n">235</div><div class="l">tests passing, 23 files</div></div>
       <div class="stat-box"><div class="n">60</div><div class="l">seeded objects, 12 founders</div></div>
       <div class="stat-box"><div class="n">≤220</div><div class="l">hard active-body cap</div></div>
       <div class="stat-box"><div class="n">&lt;30s</div><div class="l">all endpoint budgets</div></div>
     </div>
     <ul class="bullets">
-      <li><strong>87 automated tests across 9 files</strong> (vitest run), covering the placement transaction (16), anti-cheat plausibility (14), the Redis watch/multi/exec stub (13), compile determinism (11), A* solvability (9), and more.</li>
+      <li><strong>235 automated tests across 23 files</strong> (vitest run), covering the placement transaction (21), anti-cheat plausibility (19), board parsing (17), compile determinism (16), the Redis watch/multi/exec stub (13), A* solvability (10), and more — 100% coverage on the shared/core/routes gate.</li>
       <li><span class="mono">tsc --build</span> clean; <span class="mono">vite build</span> ships both entrypoints. Deterministic seed: 60 objects, 12 labeled founders, 40 ghost trails — a judge gets the identical experience every run.</li>
       <li><strong>Live-cadence plan:</strong> the test sub compiles a real board nightly via cron so the feed itself demonstrates the retention loop by judging day.</li>
     </ul>
-    <div class="notes"><strong>Speaker notes:</strong> Lead with 87/87 green — for a solo entry that signals real engineering maturity, backed by the CI pipeline. Then the seed determinism: it means the demo can't flake. Be explicit that the numbers are budgets enforced in code, not benchmarked latencies you're hand-waving.</div>
+    <div class="notes"><strong>Speaker notes:</strong> Lead with 235 tests green — for a solo entry that signals real engineering maturity, backed by the CI pipeline. Then the seed determinism: it means the demo can't flake. Be explicit that the numbers are budgets enforced in code, not benchmarked latencies you're hand-waving.</div>
   </section>
 
   <section class="slide" id="slide-10">
     <div class="eyebrow-tag">Slide 10 · Roadmap (30 / 60 / 90)</div>
-    <h1 class="slide-title">Every item maps to a verified Devvit surface.</h1>
+    <h1 class="slide-title">Every item ships on Devvit.</h1>
     <table class="pitch-table">
       <tr><th>Window</th><th>Ship</th></tr>
       <tr><td class="mono dim">30 days</td><td>Live in r/GrudgeballGame with daily cadence; device feel pass (60fps mid-range Android); tune density caps + cruelty curve from real players</td></tr>
@@ -392,9 +398,9 @@ src/client/   Canvas-2D renderer + deterministic drop sim (React-free)</pre>
 
   <section class="slide" id="slide-11">
     <div class="eyebrow-tag">Slide 11 · The Team</div>
-    <h1 class="slide-title">One solo builder, shipping the whole stack.</h1>
+    <h1 class="slide-title">One builder, the whole stack.</h1>
     <ul class="bullets">
-      <li>Pure shared core, Hono server, Canvas client, Redis schema, scheduler, moderation tools, anti-cheat model, 87 tests, full asset suite, and an honest friction log — solo.</li>
+      <li>Pure shared core, Hono server, Canvas client, Redis schema, scheduler, moderation tools, anti-cheat model, 235 tests, full asset suite, and an honest friction log — solo.</li>
       <li>Design discipline visible in the constraints: one screen, one verb, fixed palette, portrait-first, zero-horizontal-scroll as a release blocker.</li>
     </ul>
     <div class="notes"><strong>Speaker notes:</strong> The solo angle is a strength here — it demonstrates that the scope was chosen to be finishable at launch grade, which is exactly the "Polish" criterion. Point at docs/friction-log.md as proof the hard toolchain problems were met and documented, not hidden.</div>
@@ -407,7 +413,7 @@ src/client/   Canvas-2D renderer + deterministic drop sim (React-free)</pre>
     <ul class="bullets">
       <li><strong>Try it:</strong> open the demo post → center DROP → watch Greg's Regret tick to 313 → plant your grudge.</li>
       <li>Best App with a Hook · Best Use of User Contributions · Best Use of Retention Mechanics.</li>
-      <li>Repo is green (87/87), CI-gated, MIT-licensed. Video ≤60s. DEMO.md walks the exact judge path.</li>
+      <li>Repo is green (235 tests, 100% core coverage), CI-gated, MIT-licensed. Video ≤60s. DEMO.md walks the exact judge path.</li>
     </ul>
     <div class="card-row" style="margin-top: 20px;">
       <div class="mini-card">
