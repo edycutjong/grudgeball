@@ -14,6 +14,9 @@
 <meta property="og:image:height" content="1260">
 <meta property="og:url" content="https://edycutjong.github.io/grudgeball/">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root {
     --base: #07060B;
@@ -25,18 +28,22 @@
     --text: #E7E5F0;
     --dim: #8B87A0;
     --dimmer: #55506A;
+    --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
   }
   * { box-sizing: border-box; }
   html, body {
     margin: 0; padding: 0;
     background: var(--base);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    font-family: var(--font-body);
     overflow-x: hidden;
     width: 100%;
     scroll-behavior: smooth;
   }
   body { position: relative; }
+  .brand, h1.title, h2.h2, .card h3, .step h3, .final-cta h2,
+  .tcard .q, .faq summary { font-family: var(--font-display); }
 
   /* ambient background mesh */
   .bg-mesh {
@@ -323,6 +330,59 @@
   footer a:hover { color: var(--text); }
   footer .flinks { display: flex; gap: 18px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
 
+  /* ---------- field notes (in-world dispatches, not real reviews) ---------- */
+  .testis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .tcard {
+    position: relative;
+    background: linear-gradient(180deg, var(--panel), var(--panel2));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 26px 22px 22px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .tcard:hover { transform: translateY(-4px); border-color: rgba(245,158,11,0.4); }
+  .tcard .mark { font-family: Georgia, serif; font-size: 42px; line-height: 0; color: var(--brass); opacity: 0.5; }
+  .tcard .q { margin: 6px 0 18px; font-size: 1.02rem; line-height: 1.5; color: var(--text); }
+  .tcard .who { display: flex; align-items: center; gap: 12px; }
+  .tcard .av {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px; color: #0B0910;
+    background: linear-gradient(120deg, var(--red), var(--brass));
+  }
+  .tcard .u { font-weight: 700; font-size: 0.9rem; }
+  .tcard .r { color: var(--dimmer); font-size: 0.78rem; }
+  .note-flag { text-align: center; color: var(--dimmer); font-size: 0.78rem; margin-top: 22px; }
+
+  /* ---------- faq ---------- */
+  .faq { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq details {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 0 20px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+  .faq details[open] { border-color: rgba(245,158,11,0.35); background: rgba(255,255,255,0.03); }
+  .faq summary {
+    list-style: none; cursor: pointer;
+    padding: 18px 0; font-size: 1.02rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary .chev {
+    flex: none; width: 22px; height: 22px; border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(245,158,11,0.14); color: var(--brass);
+    transition: transform 0.2s ease;
+  }
+  .faq details[open] summary .chev { transform: rotate(45deg); }
+  .faq .a { padding: 0 0 20px; color: var(--dim); font-size: 0.95rem; line-height: 1.6; }
+
   ::selection { background: rgba(239,68,68,0.4); }
 
   @media (prefers-reduced-motion: reduce) {
@@ -397,6 +457,7 @@
     <nav class="nav-links">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
       <a href="pitch/">Pitch deck</a>
       <a class="nav-cta" href="https://reddit.com/r/GrudgeballGame" target="_blank" rel="noopener">Play now</a>
     </nav>
@@ -586,8 +647,8 @@
           <g font-family="monospace" font-size="12">
             <rect x="72" y="548" width="100" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.1"/>
             <text x="88" y="565" fill="#94A3B8">Devvit Web</text>
-            <rect x="182" y="548" width="86" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.1"/>
-            <text x="198" y="565" fill="#94A3B8">Phaser 3</text>
+            <rect x="182" y="548" width="92" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.1"/>
+            <text x="198" y="565" fill="#94A3B8">Canvas 2D</text>
             <rect x="278" y="548" width="64" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.1"/>
             <text x="294" y="565" fill="#94A3B8">Redis</text>
             <rect x="352" y="548" width="94" height="26" rx="13" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.1"/>
@@ -750,10 +811,81 @@
       <h2 class="h2">Green, tested, live on Reddit's own infrastructure</h2>
     </div>
     <div class="stats">
-      <div class="stat"><div class="n">87/87</div><div class="l">tests passing</div></div>
+      <div class="stat"><div class="n">235</div><div class="l">tests passing</div></div>
       <div class="stat"><div class="n">3</div><div class="l">marbles / day</div></div>
       <div class="stat"><div class="n">1.0–4.0×</div><div class="l">Cruelty Multiplier range</div></div>
       <div class="stat"><div class="n">0</div><div class="l">external services / runtime AI</div></div>
+    </div>
+  </section>
+
+  <section id="voices" class="wrap">
+    <div class="section-head">
+      <div class="kicker">Dispatches from the board</div>
+      <h2 class="h2">The board talks back</h2>
+      <p class="sub">Every run writes a line in the feed. These are the kinds of
+        dispatches the board produces — the voice of the game, in the players' words.</p>
+    </div>
+    <div class="testis">
+      <div class="tcard">
+        <div class="mark">&ldquo;</div>
+        <p class="q">I aimed dead center to play it safe. Center was a spike someone
+          named <b>Greg's Regret</b>. I was victim #313. I planted my own the second I respawned.</p>
+        <div class="who"><div class="av">QD</div><div><div class="u">u/quietdentist</div><div class="r">day 12 · banked a grudge</div></div></div>
+      </div>
+      <div class="tcard">
+        <div class="mark">&ldquo;</div>
+        <p class="q">Went full Angel this week — cushions and boosters only. Woke up to
+          <b>+41 saved</b> and a stranger thanking a bumper I named. Weirdly wholesome.</p>
+        <div class="who"><div class="av">PM</div><div><div class="u">u/plantmom</div><div class="r">Angel rank #4</div></div></div>
+      </div>
+      <div class="tcard">
+        <div class="mark">&ldquo;</div>
+        <p class="q">The Cruelty Multiplier at 11pm is a different game. <b>×3.1</b> and the
+          board's wall-to-wall traps. I only drop late now. Riskier, but the score is unreal.</p>
+        <div class="who"><div class="av">NO</div><div><div class="u">u/night_owl_42</div><div class="r">late-drop specialist</div></div></div>
+      </div>
+    </div>
+    <p class="note-flag">In-world flavor from the game's demo feed — Grudgeball has no external users yet; nothing here is presented as a real customer review.</p>
+  </section>
+
+  <section id="faq" class="wrap">
+    <div class="section-head">
+      <div class="kicker">Questions</div>
+      <h2 class="h2">Everything you'd ask before your first drop</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>How do I play? <span class="chev">+</span></summary>
+        <div class="a">Open the daily post on r/GrudgeballGame, tap a column to aim, and DROP. You get
+          three marbles a day. Spend them, then plant exactly one trap into tomorrow's board and name it.
+          Come back at dawn for your personal Grudge Report.</div>
+      </details>
+      <details>
+        <summary>Is it free? <span class="chev">+</span></summary>
+        <div class="a">Yes — it's a free Reddit game running natively inside a post via Devvit. No install,
+          no account beyond your Reddit login, no payments.</div>
+      </details>
+      <details>
+        <summary>Does it use AI to generate the board? <span class="chev">+</span></summary>
+        <div class="a">No. There is zero runtime AI. Every trap on the board was placed and named by a real
+          player who died the day before. The board is 100% crowd-built, which is the whole hook.</div>
+      </details>
+      <details>
+        <summary>What is it built on? <span class="chev">+</span></summary>
+        <div class="a">Devvit Web (Reddit's app platform): a Hono server over Redis, a dependency-free Canvas 2D
+          renderer, a nightly scheduler that compiles the board, and Reddit realtime for the live feed. No
+          external services and an empty fetch allowlist — everything runs on Reddit's own infrastructure.</div>
+      </details>
+      <details>
+        <summary>Do I have to be cruel to win? <span class="chev">+</span></summary>
+        <div class="a">No. There are two ladders. Plant cruelty and bank <b>Menace</b> credit for every kill;
+          plant mercy — cushions, boosters — and bank <b>Angel</b> credit for every save. Both are ranked.</div>
+      </details>
+      <details>
+        <summary>Is the code open? <span class="chev">+</span></summary>
+        <div class="a">Yes — the full source is on <a href="https://github.com/edycutjong/grudgeball" target="_blank" rel="noopener" style="color:var(--brass)">GitHub</a> under the MIT license,
+          with CI, 100% coverage on the shared/core/routes gate, and 235 passing tests.</div>
+      </details>
     </div>
   </section>
 
