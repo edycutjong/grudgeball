@@ -395,7 +395,7 @@ async function maybeShowReport(): Promise<void> {
         statRow('Kills', String(r.kills)) +
         statRow('Saves', String(r.saves)) +
         statRow('Your rank', rank) +
-        statRow('Board deadliest', `${escapeHtml(r.deadliestName)} (${r.deadliestKills})`) +
+        statRow('Board deadliest', `${r.deadliestName} (${r.deadliestKills})`) +
         statRow('Built by', `${r.builders} redditors`),
       'TO TODAY’S BOARD'
     );
