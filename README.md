@@ -366,6 +366,10 @@ have.
 Run `npm run check:submission` before submitting. The demo-post URL below stays a
 placeholder (and the gate stays red) until the post is live.
 
+> **The remaining `[ ]` items need no app approval — do them now.** The Reddit
+> review only unlocks the *public* App Directory listing + icon; judging happens on
+> your (public) test sub, which is entirely in your control.
+
 - App listing: https://developers.reddit.com/apps/grudgeball
 - Devpost project: https://devpost.com/software/grudgeball
 - Demo video: https://www.youtube.com/watch?v=ZHujf9Qudjw
