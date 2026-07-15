@@ -363,18 +363,22 @@ have.
 
 ## 📮 Submission checklist
 
-Run `npm run check:submission` before submitting. It fails until these are done.
-Fill the two URLs **after** `devvit publish` and creating the demo post:
+Run `npm run check:submission` before submitting. The demo-post URL below stays a
+placeholder (and the gate stays red) until the post is live.
 
 - App listing: https://developers.reddit.com/apps/grudgeball
+- Devpost project: https://devpost.com/software/grudgeball
+- Demo video: https://www.youtube.com/watch?v=ZHujf9Qudjw
 - Demo post: <DEMO_POST_URL>
 - [x] `npm run lint` clean
 - [x] `npm run type-check` clean
 - [x] `npm test` green (235/235), `npm run test:coverage` at 100%
 - [x] `npm run build` succeeds (both entrypoints resolve)
-- [ ] Demo post seeded (`Seed Demo Day`) and verified against `DEMO.md`
-- [ ] Public repo URL added to the Devpost form
-- [ ] 60-second video recorded (beat script in `DEMO.md`)
+- [x] Published to the App Directory (`devvit publish`, in review)
+- [x] 60-second demo video recorded & published (link above)
+- [x] Public repo + Devpost project page linked
+- [ ] `r/grudgeball_dev` set to **Public**, demo post seeded (`Seed Demo Day` → `Create Today's Post`) and verified against `DEMO.md`
+- [ ] Demo-post URL filled above + Devpost form submitted
 
 ## ⚙️ Engineering harness
 
