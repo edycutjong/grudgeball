@@ -6,7 +6,7 @@
 
   <br/><br/>
 
-  [![Live Demo](https://img.shields.io/badge/%F0%9F%8E%AE_Live-r%2FGrudgeballGame-EF4444?style=for-the-badge)](https://reddit.com/r/GrudgeballGame)
+  [![Live Demo](https://img.shields.io/badge/%F0%9F%8E%AE_Live-r%2Fgrudgeball_dev-EF4444?style=for-the-badge)](https://reddit.com/r/grudgeball_dev)
   [![Demo Path](https://img.shields.io/badge/%F0%9F%95%B9%EF%B8%8F_Judge-Demo_Path-F59E0B?style=for-the-badge)](DEMO.md)
   [![Pitch Deck](https://img.shields.io/badge/%F0%9F%93%8A_Pitch-Deck-34D399?style=for-the-badge)](https://edycutjong.github.io/grudgeball/pitch)
   [![Landing Page](https://img.shields.io/badge/%F0%9F%8C%90_Landing-Page-EF4444?style=for-the-badge)](https://edycutjong.github.io/grudgeball/)
@@ -337,7 +337,7 @@ have.
    Reddit safety automation — including a re-ban immediately after you install a
    Devvit app.** Reddit staff unban manually when you post your username +
    subreddit in the Devpost forum thread. Mitigation:
-   - Create your test subreddit (e.g. **r/GrudgeballGame**) from your aged main
+   - Create your test subreddit (e.g. **r/grudgeball_dev**) from your aged main
      account on **day one**, and add a normal pinned post before installing anything.
    - **Expect a re-ban at first app install.** Keep the unban-thread link handy
      and install `dr-admin-approve` per the Devvit rules.
@@ -345,7 +345,7 @@ have.
 2. **Log in:** `npm run login` (`devvit login`) with the account that owns the
    test subreddit.
 3. **Playtest:** `npm run dev` (`devvit playtest`) — it builds and uploads to your
-   dev subreddit (`devvit.json` → `dev.subreddit: "GrudgeballGame"`) and hot-reloads.
+   dev subreddit (`devvit.json` → `dev.subreddit: "grudgeball_dev"`) and hot-reloads.
 4. **Open the post and verify the two entrypoints:**
    - The **splash** (`default`, inline) renders the board snapshot + CTA in the feed.
    - Tapping the CTA calls `requestExpandedMode(event, 'game')` and the **game**
