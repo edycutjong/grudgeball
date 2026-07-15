@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/edycutjong/grudgeball/compare/v1.0.1...v1.1.0) (2026-07-15)
+
+
+### Features
+
+* **app:** add marketingAssets.icon (1024px app avatar) for the Reddit app listing ([619e10d](https://github.com/edycutjong/grudgeball/commit/619e10ded81295617a9070dd44bce2f2df079642))
+
 ## [1.0.1](https://github.com/edycutjong/grudgeball/compare/v1.0.0...v1.0.1) (2026-07-14)
 
 

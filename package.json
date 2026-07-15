@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "grudgeball",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "🪤 Daily marble-drop gauntlet where the board is built from other players' grudges — Reddit Games with a Hook (Devvit)",
   "license": "MIT",
   "repository": {
