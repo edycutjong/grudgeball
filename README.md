@@ -6,11 +6,12 @@
 
   <br/><br/>
 
-  [![Live Demo](https://img.shields.io/badge/%F0%9F%8E%AE_Live-r%2Fgrudgeball_dev-EF4444?style=for-the-badge)](https://reddit.com/r/grudgeball_dev)
-  [![Demo Path](https://img.shields.io/badge/%F0%9F%95%B9%EF%B8%8F_Judge-Demo_Path-F59E0B?style=for-the-badge)](DEMO.md)
-  [![Pitch Deck](https://img.shields.io/badge/%F0%9F%93%8A_Pitch-Deck-34D399?style=for-the-badge)](https://edycutjong.github.io/grudgeball/pitch)
-  [![Landing Page](https://img.shields.io/badge/%F0%9F%8C%90_Landing-Page-EF4444?style=for-the-badge)](https://edycutjong.github.io/grudgeball/)
-  [![Games with a Hook](https://img.shields.io/badge/Reddit-Games_with_a_Hook-8b5cf6?style=for-the-badge)](https://redditgameswithahook.devpost.com)
+  [![Play on Reddit](https://img.shields.io/badge/Play_on-Reddit-EF4444?style=for-the-badge&labelColor=0B0A07)](https://www.reddit.com/r/grudgeball_dev/)
+  [![Watch Demo](https://img.shields.io/badge/Watch-Demo-F43F5E?style=for-the-badge&labelColor=0B0A07)](https://www.youtube.com/watch?v=ZHujf9Qudjw)
+  [![Devpost](https://img.shields.io/badge/View_on-Devpost-003E54?style=for-the-badge&labelColor=0B0A07)](https://devpost.com/software/grudgeball)
+  [![Landing Page](https://img.shields.io/badge/Landing-Page-F59E0B?style=for-the-badge&labelColor=0B0A07)](https://edycutjong.github.io/grudgeball/)
+  [![Pitch Deck](https://img.shields.io/badge/Pitch-Deck-F59E0B?style=for-the-badge&labelColor=0B0A07)](https://edycutjong.github.io/grudgeball/pitch/)
+  [![Games with a Hook](https://img.shields.io/badge/Reddit-Games_with_a_Hook-8B5CF6?style=for-the-badge&labelColor=0B0A07)](https://redditgameswithahook.devpost.com)
 
   <br/>
 
