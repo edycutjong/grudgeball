@@ -37,7 +37,7 @@
     "@devvit/web": "0.13.11",
     "@hono/node-server": "2.0.10",
     "devvit": "0.13.11",
-    "hono": "4.12.31",
+    "hono": "4.13.1",
     "phaser": "3.90.0"
   },
   "devDependencies": {
