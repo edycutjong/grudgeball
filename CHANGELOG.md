@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/edycutjong/grudgeball/compare/v1.1.0...v1.1.1) (2026-08-22)
+
+
+### Bug Fixes
+
+* **deps:** resolve 14 dependency vulnerabilities via lockfile ([db69054](https://github.com/edycutjong/grudgeball/commit/db69054ccef023b0926a2cd52cf2b2ae3212ccee))
+
 # [1.1.0](https://github.com/edycutjong/grudgeball/compare/v1.0.1...v1.1.0) (2026-07-15)
 
 
